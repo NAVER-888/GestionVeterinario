@@ -11,13 +11,13 @@ namespace GestionVeterinaria.Controllers
     {
         private readonly Categoria_productoService _service = new Categoria_productoService();
 
-        [HttpGet]
+        [HttpGet("lista")]
         public ActionResult<List<Categoria_producto>> Get()
         {
             return _service.ObtenerTodas();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("buscar")]
         public ActionResult<Categoria_producto> Get(int id)
         {
             var categoria = _service.ObtenerPorId(id);
@@ -27,7 +27,7 @@ namespace GestionVeterinaria.Controllers
             return categoria;
         }
 
-        [HttpPost]
+        [HttpPost("insertar")]
         public IActionResult Post([FromBody] Categoria_producto categoria)
         {
             var resultado = _service.Crear(categoria.nombre_categoria, categoria.descripcion);
@@ -37,7 +37,7 @@ namespace GestionVeterinaria.Controllers
             return Ok("Categoría creada correctamente.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("actualizar")]
         public IActionResult Put(int id, [FromBody] Categoria_producto categoria)
         {
             var resultado = _service.Actualizar(id, categoria.nombre_categoria, categoria.descripcion);
@@ -47,7 +47,7 @@ namespace GestionVeterinaria.Controllers
             return Ok("Categoría actualizada correctamente.");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("eliminar")]
         public IActionResult Delete(int id)
         {
             var resultado = _service.Eliminar(id);

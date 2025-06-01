@@ -11,13 +11,13 @@ namespace GestionVeterinaria.Controllers
     {
         private readonly ProductoService _service = new ProductoService();
 
-        [HttpGet]
+        [HttpGet("lista")]
         public ActionResult<List<Producto>> Get()
         {
             return _service.ObtenerTodos();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("buscar")]
         public ActionResult<Producto> Get(int id)
         {
             var producto = _service.ObtenerPorId(id);
@@ -27,7 +27,7 @@ namespace GestionVeterinaria.Controllers
             return producto;
         }
 
-        [HttpPost]
+        [HttpPost("insertar")]
         public IActionResult Post([FromBody] Producto producto)
         {
             var resultado = _service.Crear(
@@ -44,7 +44,7 @@ namespace GestionVeterinaria.Controllers
             return Ok("Producto creado correctamente.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("actualizar")]
         public IActionResult Put(int id, [FromBody] Producto producto)
         {
             var resultado = _service.Actualizar(
@@ -62,7 +62,7 @@ namespace GestionVeterinaria.Controllers
             return Ok("Producto actualizado correctamente.");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("eliminar")]
         public IActionResult Delete(int id)
         {
             var resultado = _service.Eliminar(id);

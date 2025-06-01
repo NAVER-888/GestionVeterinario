@@ -11,7 +11,7 @@ public partial class Detalle_cita
 
     public int id_servicio { get; set; }
 
-    public int? cantidad { get; set; }
+    public int cantidad { get; set; }
 
     public decimal precio_unitario { get; set; }
 

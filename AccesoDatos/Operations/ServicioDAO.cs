@@ -73,10 +73,29 @@ namespace AccesoDatos.operation
             }
         }
 
+        public bool eliminar(int id)
+        {
+            try
+            {
+                var alumno = seleccionarServicio(id);
 
+                if (alumno == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    context.Servicio.Remove(alumno);
+                    context.SaveChanges();
 
-
-        //falta eliminar
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
 
         public List<ServicioRazaPrecio> ServicioRazaPrecios()

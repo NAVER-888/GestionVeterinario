@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AccesoDatos.Models
@@ -13,7 +14,8 @@ namespace AccesoDatos.Models
         public string DescripcionServicio { get; set; }      // s.descripcion AS descripcion_servicio
         public string NombreRaza { get; set; }               // r.nombre_raza
         public string DescripcionRaza { get; set; }          // r.descripcion AS descripcion_raza
-        public string Especie { get; set; }                  // spr.especie
+        public string Especie { get; set; }
+        [JsonConverter(typeof(CustomDecimalConverter))]
         public decimal PrecioPersonalizado { get; set; }     // spr.precio AS precio_personalizado
 
     }

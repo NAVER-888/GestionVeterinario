@@ -21,7 +21,7 @@ namespace GestionVeterinaria.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult GetUsuarios()
         {
             var usuarios = _usuarioService.ObtenerTodos();
@@ -40,7 +40,7 @@ namespace GestionVeterinaria.Controllers
         }
 
         [HttpGet("buscar")]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult BuscarUsuarios([FromQuery] int? id_usuario, [FromQuery] string? nombre, [FromQuery] string? apellido, [FromQuery] string? email)
         {
             var usuarios = _usuarioService.BuscarUsuarios(id_usuario, nombre, apellido, email);
@@ -54,7 +54,7 @@ namespace GestionVeterinaria.Controllers
         }
 
         [HttpPost("insertar")]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult CrearUsuario([FromBody] Usuario usuario)
         {
             if (!ModelState.IsValid)
@@ -68,7 +68,7 @@ namespace GestionVeterinaria.Controllers
         }
 
         [HttpPut("actualizar")]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult ActualizarUsuario([FromBody] Usuario usuario)
         {
             if (!ModelState.IsValid)
